@@ -14,19 +14,6 @@ public class Medidas {
 
   private LocalDateTime instante;
 
-  public Medidas() {
-
-  }
-
-  public Medidas(Integer idIlha, double temperatura, double humidadeSolo, double humidadeAr,
-      LocalDateTime instante) {
-    this.idIlha = idIlha;
-    this.temperatura = temperatura;
-    this.humidadeSolo = humidadeSolo;
-    this.humidadeAr = humidadeAr;
-    this.instante = instante;
-  }
-
   public Integer getIdIlha() {
     return idIlha;
   }
