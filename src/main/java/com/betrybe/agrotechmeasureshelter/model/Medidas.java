@@ -4,22 +4,20 @@ import java.time.LocalDateTime;
 
 public class Medidas {
 
-  private Integer idIlha;
-
   private double temperatura;
 
   private double humidadeSolo;
 
   private double humidadeAr;
 
-  private LocalDateTime instante;
+  private LocalDateTime instante = LocalDateTime.now();
 
-  public Integer getIdIlha() {
-    return idIlha;
-  }
+  public Medidas() {}
 
-  public void setIdIlha(Integer idIlha) {
-    this.idIlha = idIlha;
+  public Medidas(double temperatura, double humidadeSolo, double humidadeAr) {
+    this.temperatura = temperatura;
+    this.humidadeSolo = humidadeSolo;
+    this.humidadeAr = humidadeAr;
   }
 
   public double getTemperatura() {
