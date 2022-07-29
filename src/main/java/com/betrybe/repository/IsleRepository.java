@@ -1,13 +1,13 @@
 package com.betrybe.repository;
 
 import javax.enterprise.context.ApplicationScoped;
-import com.betrybe.agrotechmeasureshelter.model.Ilha;
+import com.betrybe.agrotechmeasureshelter.model.Isle;
 import io.quarkus.mongodb.panache.PanacheMongoRepository;
 
 @ApplicationScoped
-public class IlhaRepository implements PanacheMongoRepository<Ilha> {
+public class IsleRepository implements PanacheMongoRepository<Isle> {
 
-  public Ilha findByName(String name) {
+  public Isle findByName(String name) {
     return find("name", name).firstResult();
   }
 }
