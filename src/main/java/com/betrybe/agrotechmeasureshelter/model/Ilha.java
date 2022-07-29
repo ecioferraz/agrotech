@@ -1,8 +1,10 @@
 package com.betrybe.agrotechmeasureshelter.model;
 
-import io.quarkus.mongodb.panache.PanacheMongoEntity;
+import org.bson.types.ObjectId;
 
-public class Ilha extends PanacheMongoEntity {
+public class Ilha {
+
+  public ObjectId id;
 
   private String name;
 
@@ -13,10 +15,6 @@ public class Ilha extends PanacheMongoEntity {
   public Ilha(String name, Boolean status) {
     this.name = name;
     this.status = status;
-  }
-
-  public static Ilha findByName(String name) {
-    return find("name", name).firstResult();
   }
 
   /**
