@@ -1,8 +1,11 @@
 package com.betrybe.agrotechmeasureshelter.model;
 
 import java.time.LocalDateTime;
+import org.bson.types.ObjectId;
 
 public class Medidas {
+
+  public ObjectId id;
 
   private double temperatura;
 
