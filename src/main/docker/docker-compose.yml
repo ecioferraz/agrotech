@@ -1,0 +1,15 @@
+services:
+  quarkus:
+    image: quarkus/agrotech-measure-shelter-jvm:latest
+    build: .
+    restart: always
+    ports:
+      - 8080:8080
+    links:
+      - mongodb:database
+
+  mongodb:
+    image: mongo:latest
+    restart: always
+    ports:
+      - 27017:27017
