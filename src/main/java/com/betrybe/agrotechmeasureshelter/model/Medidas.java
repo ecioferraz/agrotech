@@ -5,7 +5,7 @@ import org.bson.types.ObjectId;
 
 public class Medidas {
 
-  public ObjectId id;
+  public ObjectId idIlha;
 
   private double temperatura;
 
@@ -17,7 +17,8 @@ public class Medidas {
 
   public Medidas() {}
 
-  public Medidas(double temperatura, double humidadeSolo, double humidadeAr) {
+  public Medidas(ObjectId idIlha, double temperatura, double humidadeSolo, double humidadeAr) {
+    this.idIlha = idIlha;
     this.temperatura = temperatura;
     this.humidadeSolo = humidadeSolo;
     this.humidadeAr = humidadeAr;
