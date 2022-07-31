@@ -9,7 +9,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import com.betrybe.agrotechmeasureshelter.model.Medidas;
+import com.betrybe.agrotechmeasureshelter.model.Measurements;
 import com.betrybe.agrotechmeasureshelter.service.MedidasService;
 
 @Path("/medidas")
@@ -21,13 +21,13 @@ public class MedidasResource {
   MedidasService medidasService;
 
   @POST
-  public Response create(Medidas medidas) {
-    medidasService.add(medidas);
+  public Response create(Measurements measurements) {
+    medidasService.add(measurements);
     return Response.status(201).build();
   }
 
   @GET
-  public List<Medidas> listAll() {
+  public List<Measurements> listAll() {
     return medidasService.list();
   }
 }

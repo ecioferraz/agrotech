@@ -3,56 +3,65 @@ package com.betrybe.agrotechmeasureshelter.model;
 import java.time.LocalDateTime;
 import org.bson.types.ObjectId;
 
-public class Medidas {
+public class Measurements {
 
-  public ObjectId idIlha;
+  public ObjectId idIsle;
 
-  private double temperatura;
+  private double temperature;
 
-  private double humidadeSolo;
+  private double soilHumidity;
 
-  private double humidadeAr;
+  private double airHumidity;
 
-  private LocalDateTime instante = LocalDateTime.now();
+  private LocalDateTime measuredAt = LocalDateTime.now();
 
-  public Medidas() {}
+  public Measurements() {}
 
-  public Medidas(String idIlha, double temperatura, double humidadeSolo, double humidadeAr) {
-    this.idIlha = new ObjectId(idIlha);
-    this.temperatura = temperatura;
-    this.humidadeSolo = humidadeSolo;
-    this.humidadeAr = humidadeAr;
+  public Measurements(String idIsle, double temperature, double soilHumidity, double airHumidity) {
+    this.idIsle = new ObjectId(idIsle);
+    this.temperature = temperature;
+    this.soilHumidity = soilHumidity;
+    this.airHumidity = airHumidity;
   }
 
-  public double getTemperatura() {
-    return temperatura;
+  public ObjectId getIdIsle() {
+    return idIsle;
   }
 
-  public void setTemperatura(double temperatura) {
-    this.temperatura = temperatura;
+  public void setIdIsle(ObjectId idIsle) {
+    this.idIsle = idIsle;
   }
 
-  public double getHumidadeSolo() {
-    return humidadeSolo;
+  public double getTemperature() {
+    return temperature;
   }
 
-  public void setHumidadeSolo(double humidadeSolo) {
-    this.humidadeSolo = humidadeSolo;
+  public void setTemperature(double temperature) {
+    this.temperature = temperature;
   }
 
-  public double getHumidadeAr() {
-    return humidadeAr;
+  public double getSoilHumidity() {
+    return soilHumidity;
   }
 
-  public void setHumidadeAr(double humidadeAr) {
-    this.humidadeAr = humidadeAr;
+  public void setSoilHumidity(double soilHumidity) {
+    this.soilHumidity = soilHumidity;
   }
 
-  public LocalDateTime getInstante() {
-    return instante;
+  public double getAirHumidity() {
+    return airHumidity;
   }
 
-  public void setInstante(LocalDateTime instante) {
-    this.instante = instante;
+  public void setAirHumidity(double airHumidity) {
+    this.airHumidity = airHumidity;
   }
+
+  public LocalDateTime getMeasuredAt() {
+    return measuredAt;
+  }
+
+  public void setMeasuredAt(LocalDateTime measuredAt) {
+    this.measuredAt = measuredAt;
+  }
+
 }
