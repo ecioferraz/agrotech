@@ -5,5 +5,5 @@ import com.betrybe.agrotechmeasureshelter.model.Measurements;
 import io.quarkus.mongodb.panache.PanacheMongoRepository;
 
 @ApplicationScoped
-public class MedidasRepository implements PanacheMongoRepository<Measurements> {
+public class MeasurementsRepository implements PanacheMongoRepository<Measurements> {
 }

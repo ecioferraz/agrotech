@@ -10,24 +10,24 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import com.betrybe.agrotechmeasureshelter.model.Measurements;
-import com.betrybe.agrotechmeasureshelter.service.MedidasService;
+import com.betrybe.agrotechmeasureshelter.service.MeasurementsService;
 
 @Path("/medidas")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-public class MedidasResource {
+public class MeasurementsResource {
 
   @Inject
-  MedidasService medidasService;
+  MeasurementsService measurementsService;
 
   @POST
   public Response create(Measurements measurements) {
-    medidasService.add(measurements);
+    measurementsService.add(measurements);
     return Response.status(201).build();
   }
 
   @GET
   public List<Measurements> listAll() {
-    return medidasService.list();
+    return measurementsService.list();
   }
 }

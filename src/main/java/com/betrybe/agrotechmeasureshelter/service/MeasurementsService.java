@@ -4,20 +4,20 @@ import java.util.List;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import com.betrybe.agrotechmeasureshelter.model.Measurements;
-import com.betrybe.agrotechmeasureshelter.repository.MedidasRepository;
+import com.betrybe.agrotechmeasureshelter.repository.MeasurementsRepository;
 
 @ApplicationScoped
-public class MedidasService {
+public class MeasurementsService {
 
   @Inject
-  MedidasRepository medidasRepository;
+  MeasurementsRepository measurementsRepository;
 
   public List<Measurements> list() {
-    List<Measurements> measurements = medidasRepository.listAll();
+    List<Measurements> measurements = measurementsRepository.listAll();
     return measurements;
   }
 
   public void add(Measurements measurements) {
-    medidasRepository.persist(measurements);
+    measurementsRepository.persist(measurements);
   }
 }
