@@ -17,8 +17,8 @@ public class Medidas {
 
   public Medidas() {}
 
-  public Medidas(ObjectId idIlha, double temperatura, double humidadeSolo, double humidadeAr) {
-    this.idIlha = idIlha;
+  public Medidas(String idIlha, double temperatura, double humidadeSolo, double humidadeAr) {
+    this.idIlha = new ObjectId(idIlha);
     this.temperatura = temperatura;
     this.humidadeSolo = humidadeSolo;
     this.humidadeAr = humidadeAr;

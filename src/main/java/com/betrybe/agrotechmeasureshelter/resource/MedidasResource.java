@@ -10,7 +10,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import com.betrybe.agrotechmeasureshelter.model.Medidas;
-import com.betrybe.agrotechmeasureshelter.repository.MedidasRepository;
+import com.betrybe.agrotechmeasureshelter.service.MedidasService;
 
 @Path("/medidas")
 @Consumes(MediaType.APPLICATION_JSON)
@@ -18,16 +18,16 @@ import com.betrybe.agrotechmeasureshelter.repository.MedidasRepository;
 public class MedidasResource {
 
   @Inject
-  MedidasRepository medidasRepository;
+  MedidasService medidasService;
 
   @POST
   public Response create(Medidas medidas) {
-    medidasRepository.persist(medidas);
+    medidasService.add(medidas);
     return Response.status(201).build();
   }
 
   @GET
   public List<Medidas> listAll() {
-    return medidasRepository.listAll();
+    return medidasService.list();
   }
 }

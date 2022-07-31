@@ -16,4 +16,8 @@ public class MedidasService {
     List<Medidas> medidas = medidasRepository.listAll();
     return medidas;
   }
+
+  public void add(Medidas medidas) {
+    medidasRepository.persist(medidas);
+  }
 }
