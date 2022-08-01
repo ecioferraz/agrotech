@@ -17,7 +17,8 @@ public class MeasurementsService {
     return measurements;
   }
 
-  public void add(Measurements measurements) {
+  public Measurements add(Measurements measurements) {
     measurementsRepository.persist(measurements);
+    return measurements;
   }
 }
