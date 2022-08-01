@@ -1,8 +1,8 @@
 package com.betrybe.agrotechmeasureshelter.service;
 
-import com.betrybe.Exception.NotFoundException;
+import com.betrybe.agrotechmeasureshelter.Exception.NotFoundException;
 import com.betrybe.agrotechmeasureshelter.model.Isle;
-import com.betrybe.repository.IsleRepository;
+import com.betrybe.agrotechmeasureshelter.repository.IsleRepository;
 import org.bson.types.ObjectId;
 import java.util.List;
 import javax.enterprise.context.ApplicationScoped;

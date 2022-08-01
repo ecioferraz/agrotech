@@ -1,4 +1,4 @@
-package com.betrybe.Exception;
+package com.betrybe.agrotechmeasureshelter.Exception;
 
 public class NotFoundException extends Exception {
 

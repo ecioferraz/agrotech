@@ -1,4 +1,4 @@
-package com.betrybe.repository;
+package com.betrybe.agrotechmeasureshelter.repository;
 
 import javax.enterprise.context.ApplicationScoped;
 import com.betrybe.agrotechmeasureshelter.model.Isle;
