@@ -28,6 +28,14 @@
     </dependencies>
   </dependencyManagement>
   <dependencies>
+  	<dependency>
+  	  <groupId>org.testcontainers</groupId>
+  	  <artifactId>testcontainers</artifactId>
+  	</dependency>
+  	<dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-junit5-mockito</artifactId>
+    </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-mongodb-panache</artifactId>
