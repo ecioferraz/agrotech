@@ -1,5 +1,6 @@
 package com.betrybe.agrotechmeasureshelter.service;
 
+import com.betrybe.Exception.NotFoundException;
 import com.betrybe.agrotechmeasureshelter.model.Isle;
 import com.betrybe.repository.IsleRepository;
 import org.bson.types.ObjectId;
@@ -22,16 +23,15 @@ public class IsleService {
     isleRepository.persist(isle);
   }
 
-  public Isle findById(String id) {
+  public Isle findById(String id) throws NotFoundException {
     Isle isle = isleRepository.findById(new ObjectId(id));
-    // Precisa criar essa classe
-    // if (isle == null) {
-    // throw new NotFoundException();
-    // }
+    if (isle == null) {
+      throw new NotFoundException();
+    }
     return isle;
   }
 
-  public Isle update(String id, Isle isle) {
+  public Isle update(String id, Isle isle) throws NotFoundException {
     Isle isleToUpdate = findById(id);
     isleToUpdate.setName(isle.getName());
     isleToUpdate.setStatus(isle.getStatus());
@@ -39,7 +39,7 @@ public class IsleService {
     return isleToUpdate;
   }
 
-  public void delete(String id) {
+  public void delete(String id) throws NotFoundException {
     Isle isle = findById(id);
     isleRepository.delete(isle);
   }
