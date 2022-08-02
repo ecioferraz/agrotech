@@ -17,7 +17,7 @@ import io.quarkus.test.junit.mockito.InjectMock;
 @QuarkusTest
 public class MeasurementsServiceTest {
 
-  @InjectMock
+  @Inject
   MeasurementsService measurementsService;
 
   @InjectMock
@@ -26,8 +26,8 @@ public class MeasurementsServiceTest {
   @BeforeAll
   public static void setup() {
     List<Measurements> mockList = new ArrayList<Measurements>();
-    Measurements mockMeasurement = new Measurements("507f1f77bcf86cd799439011", 15.33, 3.33, 3.33);
     MeasurementsRepository mockRepository = Mockito.mock(MeasurementsRepository.class);
+    Mockito.doNothing().when(mockRepository).persist(Mockito.any(Measurements.class));
     Mockito.when(mockRepository.listAll()).thenReturn(mockList);
     QuarkusMock.installMockForType(mockRepository, MeasurementsRepository.class);
   }
@@ -36,6 +36,13 @@ public class MeasurementsServiceTest {
   public void testListAllMeasurements() {
     List<Measurements> emptyList = measurementsService.list();
     Assertions.assertTrue(emptyList.size() == 0);
+  }
+
+  @Test
+  public void testCreateMeasurement() {
+    Measurements mockMeasurement = new Measurements("507f1f77bcf86cd799439011", 15.33, 3.33, 3.33);
+    Measurements result = measurementsService.add(mockMeasurement);
+    Assertions.assertTrue(result.equals(mockMeasurement));
   }
 
 }
