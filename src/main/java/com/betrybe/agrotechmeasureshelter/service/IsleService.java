@@ -1,15 +1,21 @@
 package com.betrybe.agrotechmeasureshelter.service;
 
-import com.betrybe.agrotechmeasureshelter.Exception.NotFoundException;
+import com.betrybe.agrotechmeasureshelter.exception.NotFoundException;
 import com.betrybe.agrotechmeasureshelter.model.Isle;
+import com.betrybe.agrotechmeasureshelter.model.Measurements;
 import com.betrybe.agrotechmeasureshelter.repository.IsleRepository;
 import org.bson.types.ObjectId;
 import java.util.List;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import io.quarkus.scheduler.Scheduled;
+import io.quarkus.scheduler.ScheduledExecution;
 
 @ApplicationScoped
 public class IsleService {
+
+  @Inject
+  MeasurementsService measurementsService;
 
   @Inject
   IsleRepository isleRepository;
@@ -22,6 +28,22 @@ public class IsleService {
   public void add(Isle isle) {
     isleRepository.persist(isle);
   }
+
+  @Scheduled(every = "2s") // 5min = PT20M - "PT15M" -- parses as "15 minutes" (where a minute is 60
+                           // seconds)
+  public void createAutomatedMeasures() {
+    List<Isle> getAllIsle = isleRepository.listAll();
+    getAllIsle.stream().forEach(isle -> {
+      String idIsle = isle.getId().toString();
+      double temperature = 20;
+      double soilHumidity = 25;
+      double airHumidity = 45;
+      Measurements newMeasurement =
+          new Measurements(idIsle, temperature, soilHumidity, airHumidity);
+      measurementsService.add(newMeasurement);
+    });
+  }
+
 
   public Isle findById(String id) throws NotFoundException {
     Isle isle = isleRepository.findById(new ObjectId(id));

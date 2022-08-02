@@ -22,6 +22,13 @@ public class Isle {
   }
 
   /**
+   * Retorna o id da Ilha.
+   */
+  public ObjectId getId() {
+    return id;
+  }
+
+  /**
    * Retorna o name.
    */
   public String getName() {
