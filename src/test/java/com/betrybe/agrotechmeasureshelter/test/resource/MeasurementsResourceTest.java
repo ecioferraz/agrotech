@@ -26,7 +26,7 @@ public class MeasurementsResourceTest {
     Measurements mockMeasurement = new Measurements("507f1f77bcf86cd799439011", 15.33, 3.33, 3.33);
     MeasurementsService mockService = Mockito.mock(MeasurementsService.class);
     Mockito.when(mockService.list()).thenReturn(mockList);
-    Mockito.when(mockService.add(Mockito.any(Measurements.class))).thenReturn(mockMeasurement);
+    Mockito.doNothing().when(mockService).add(mockMeasurement);
     QuarkusMock.installMockForType(mockService, MeasurementsService.class);
   }
 
@@ -38,7 +38,7 @@ public class MeasurementsResourceTest {
   @Test
   public void testSuccesfulPostRequest() {
     Measurements mockMeasurement = new Measurements("507f1f77bcf86cd799439011", 15.33, 3.33, 3.33);
-    given().body(mockMeasurement).header("Content-Type", "application/json").when().post("/medidas")
-        .then().statusCode(201);
+    given().body(mockMeasurement).header("Content-Type", "application/json").when()
+        .post("/measurement").then().statusCode(201);
   }
 }
