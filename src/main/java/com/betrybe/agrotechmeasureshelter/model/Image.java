@@ -1,11 +1,12 @@
 package com.betrybe.agrotechmeasureshelter.model;
 
 import java.time.LocalDateTime;
-
+import org.bson.codecs.pojo.annotations.BsonId;
 import org.bson.types.ObjectId;
 
 public class Image {
 
+  @BsonId
   public ObjectId imageId;
 
   private String originalName;
@@ -55,5 +56,5 @@ public class Image {
   public void setUploadDate(LocalDateTime uploadDate) {
     this.uploadDate = uploadDate;
   }
-  
+
 }
