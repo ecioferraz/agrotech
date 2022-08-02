@@ -1,18 +1,22 @@
 package com.betrybe.agrotechmeasureshelter.model;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import org.bson.types.ObjectId;
 
-public class Ilha {
+public class Isle {
 
   public ObjectId id;
 
+  @NotBlank(message = "name is required!")
   private String name;
 
+  @NotNull(message = "status is required!")
   private Boolean status;
 
-  public Ilha() {}
+  public Isle() {}
 
-  public Ilha(String name, Boolean status) {
+  public Isle(String name, Boolean status) {
     this.name = name;
     this.status = status;
   }
