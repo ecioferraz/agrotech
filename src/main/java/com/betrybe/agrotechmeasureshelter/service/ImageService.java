@@ -27,11 +27,12 @@ public class ImageService {
 
   @Inject
   S3Client s3;
-  
+
   @Inject
   ImageRepository repository;
 
-  private List<String> mimeType = Arrays.asList("image/jpeg", "image/png", "image/pjpeg", "image/gif");
+  private List<String> mimeType =
+      Arrays.asList("image/jpeg", "image/png", "image/pjpeg", "image/gif");
 
   public List<Image> list() {
     return repository.listAll();
@@ -39,6 +40,8 @@ public class ImageService {
 
   @Transactional
   public Image sendImage(FormData data) {
+    System.out.println("|||||||||||");
+    System.out.println(data.getFile().fileName());
     if (data.getFile() == null) {
       throw new RuntimeException("File not send");
     }
@@ -62,7 +65,7 @@ public class ImageService {
     image.setFileSize(file.size());
 
     PutObjectRequest putObjectRequest = buildPutRequest(keyName, file);
-    
+
     s3.putObject(putObjectRequest, RequestBody.fromFile(file.filePath()));
 
     repository.persist(image);
@@ -71,24 +74,21 @@ public class ImageService {
   }
 
   private PutObjectRequest buildPutRequest(String keyName, FileUpload file) {
-    return PutObjectRequest.builder()
-        .bucket(bucketName)
-        .key(keyName)
-        .contentType(file.contentType())
-        .build();
+    return PutObjectRequest.builder().bucket(bucketName).key(keyName)
+        .contentType(file.contentType()).build();
   }
 
   // método get do s3, tirado da documentação, não sei se vamos precisar usar
   // private GetObjectRequest buildGetRequest(String keyName) {
-  //   return GetObjectRequest.builder()
-  //           .bucket(bucketName)
-  //           .key(keyName)
-  //           .build();
+  // return GetObjectRequest.builder()
+  // .bucket(bucketName)
+  // .key(keyName)
+  // .build();
   // }
 
 
   private String generateKeyName(FileUpload file) {
     return UUID.randomUUID() + "-" + file.fileName();
   }
-  
+
 }
