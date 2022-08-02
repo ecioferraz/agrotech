@@ -1,4 +1,4 @@
-package com.betrybe.agrotechmeasureshelter.test;
+package com.betrybe.agrotechmeasureshelter.test.resource;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
