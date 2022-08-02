@@ -12,7 +12,7 @@ import javax.ws.rs.core.Response;
 import com.betrybe.agrotechmeasureshelter.model.Measurements;
 import com.betrybe.agrotechmeasureshelter.service.MeasurementsService;
 
-@Path("/medidas")
+@Path("/measurement")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class MeasurementsResource {
