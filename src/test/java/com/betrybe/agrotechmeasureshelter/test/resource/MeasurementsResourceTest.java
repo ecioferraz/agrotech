@@ -32,7 +32,7 @@ public class MeasurementsResourceTest {
 
   @Test
   public void testSuccesfulGetRequest() {
-    given().when().get("/medidas").then().statusCode(200).body(containsString("[]"));
+    given().when().get("/measurement").then().statusCode(200).body(containsString("[]"));
   }
 
   @Test
