@@ -36,10 +36,9 @@ public class ImageResource {
   }
 
   @GET
-  @Produces(MediaType.APPLICATION_JSON)
   @Path("/{date}")
   public Response donwloadByDate(@PathParam("date") String date) {
-    java.nio.file.Path path = service.getByDate(date);
+    String path = service.getByDate(date);
     return Response.ok(path).build();
   }
 

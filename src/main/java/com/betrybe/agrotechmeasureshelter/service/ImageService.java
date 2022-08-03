@@ -52,11 +52,10 @@ public class ImageService {
     return image;
   }
 
-  public Path getByDate(String date) {
-    LocalDateTime dateTime = LocalDateTime.parse(date);
-    String pathString = repository.find("createdAt", dateTime).firstResult().getPath();
-    Path path = Path.of(pathString);
-    return path;
+  public String getByDate(String date) {
+    String pathString =
+        repository.find("createdAt", LocalDateTime.parse(date)).firstResult().getPath();
+    return pathString;
   }
 
 }
