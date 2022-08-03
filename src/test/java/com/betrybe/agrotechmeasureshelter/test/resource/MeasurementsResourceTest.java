@@ -38,7 +38,7 @@ public class MeasurementsResourceTest {
   @Test
   public void testSuccesfulPostRequest() {
     Measurements mockMeasurement = new Measurements("507f1f77bcf86cd799439011", 15.33, 3.33, 3.33);
-    given().body(mockMeasurement).header("Content-Type", "application/json").when().post("/medidas")
+    given().body(mockMeasurement).header("Content-Type", "application/json").when().post("/measurement")
         .then().statusCode(201);
   }
 }
