@@ -52,10 +52,9 @@ public class ImageService {
     return image;
   }
 
-  public Path getByDate(String date) {
+  public String getByDate(String date) {
     String pathString =
         repository.find("createdAt", LocalDateTime.parse(date)).firstResult().getPath();
-    Path path = Paths.get(pathString);
-    return path;
+    return pathString;
   }
 }
