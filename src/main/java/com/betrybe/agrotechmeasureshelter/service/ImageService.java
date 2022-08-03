@@ -44,16 +44,7 @@ public class ImageService {
       throw new IOException("File is too large");
     }
 
-    // Image image = new Image();
-
     String fileName = UUID.randomUUID() + "-" + data.getFile().fileName();
-
-    // image.setOriginalName(data.getFile().fileName());
-    // image.setKeyName(fileName);
-    // image.setMimetype(data.getFile().contentType());
-    // image.setFileSize(data.getFile().size());
-
-    // repository.persist(image);
 
     Path path = Files.copy(data.getFile().filePath(), Paths.get(directory + fileName));
 
