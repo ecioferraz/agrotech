@@ -15,6 +15,8 @@ public class Image {
   private String keyName;
 
   private Long fileSize;
+  
+  private String mimetype;
 
   private LocalDateTime uploadDate = LocalDateTime.now();
 
@@ -48,6 +50,14 @@ public class Image {
 
   public void setFileSize(Long fileSize) {
     this.fileSize = fileSize;
+  }
+  
+  public String getMimetype() {
+    return mimetype;
+  }
+
+  public void setMimetype(String mimetype) {
+    this.mimetype = mimetype;
   }
 
   public LocalDateTime getUploadDate() {
