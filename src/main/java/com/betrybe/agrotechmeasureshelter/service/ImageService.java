@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
@@ -32,7 +33,7 @@ public class ImageService {
   }
 
   @Transactional
-  public Path sendUpload(FormData data) throws IOException {
+  public Image sendUpload(FormData data) throws IOException {
 
     List<String> mimetype = Arrays.asList("image/jpg", "image/jpeg", "image/gif", "image/png");
 
@@ -48,6 +49,16 @@ public class ImageService {
 
     Path path = Files.copy(data.getFile().filePath(), Paths.get(directory + fileName));
 
+    Image image = new Image(path.toString());
+    repository.persist(image);
+
+    return image;
+  }
+
+  public Path getByDate(String date) {
+    LocalDateTime dateTime = LocalDateTime.parse(date);
+    String pathString = repository.find("createdAt", dateTime).firstResult().getPath();
+    Path path = Path.of(pathString);
     return path;
   }
 

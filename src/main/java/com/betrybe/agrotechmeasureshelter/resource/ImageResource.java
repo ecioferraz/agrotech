@@ -8,6 +8,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -33,8 +34,17 @@ public class ImageResource {
   @Consumes(MediaType.MULTIPART_FORM_DATA)
   @Produces(MediaType.APPLICATION_JSON)
   public Response sendUpload(@MultipartForm FormData data) throws IOException {
-    java.nio.file.Path path = service.sendUpload(data);
-    return Response.status(201).entity(path).build();
+    Image image = service.sendUpload(data);
+    return Response.status(201).entity(image).build();
   }
+
+  @GET
+  @Produces(MediaType.APPLICATION_JSON)
+  @Path("/{date}")
+  public Response donwloadByDate(@PathParam("date") String date) {
+    java.nio.file.Path path = service.getByDate(date);
+    return Response.ok(path).build();
+  }
+
 
 }
