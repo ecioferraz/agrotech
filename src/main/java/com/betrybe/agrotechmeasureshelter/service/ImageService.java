@@ -11,7 +11,6 @@ import java.util.UUID;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import javax.transaction.Transactional;
 
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 import com.betrybe.agrotechmeasureshelter.model.FormData;
@@ -31,7 +30,6 @@ public class ImageService {
     return repository.listAll();
   }
 
-  @Transactional
   public Image sendUpload(FormData data) throws IOException {
 
     List<String> mimetype = Arrays.asList("image/jpg", "image/jpeg", "image/gif", "image/png");
