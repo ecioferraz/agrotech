@@ -42,7 +42,7 @@ public class ImageService {
       throw new IOException("File is too large");
     }
 
-    String fileName = UUID.randomUUID() + "-" + data.getFile().fileName();
+    String fileName = UUID.randomUUID() + "-" + data.getFile().fileName().replace(" ", "-");
 
     Path path = Files.copy(data.getFile().filePath(), Paths.get(directory + fileName));
 
@@ -52,10 +52,10 @@ public class ImageService {
     return image;
   }
 
-  public String getByDate(String date) {
+  public Path getByDate(String date) {
     String pathString =
         repository.find("createdAt", LocalDateTime.parse(date)).firstResult().getPath();
-    return pathString;
+    Path path = Paths.get(pathString);
+    return path;
   }
-
 }

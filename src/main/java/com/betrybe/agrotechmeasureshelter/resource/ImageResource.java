@@ -38,9 +38,7 @@ public class ImageResource {
   @GET
   @Path("/{date}")
   public Response donwloadByDate(@PathParam("date") String date) {
-    String path = service.getByDate(date);
-    return Response.ok(path).build();
+    java.nio.file.Path path = service.getByDate(date);
+    return Response.status(200).entity(path).build();
   }
-
-
 }
