@@ -30,4 +30,10 @@ public class MeasurementsResource {
   public List<Measurements> listAll() {
     return measurementsService.list();
   }
+
+  @GET
+  @Path("drop")
+  public void dropMeasures() {
+    measurementsService.dropMeasures();
+  }
 }
