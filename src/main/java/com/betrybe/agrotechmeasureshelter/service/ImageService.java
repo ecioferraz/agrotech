@@ -14,10 +14,9 @@ import javax.inject.Inject;
 import javax.transaction.Transactional;
 
 import org.eclipse.microprofile.config.inject.ConfigProperty;
-
 import com.betrybe.agrotechmeasureshelter.model.FormData;
 import com.betrybe.agrotechmeasureshelter.model.Image;
-import com.betrybe.agrotechmeasureshelter.repository.ImagesRepository;
+import com.betrybe.agrotechmeasureshelter.repository.ImageRepository;
 
 @ApplicationScoped
 public class ImageService {
@@ -26,7 +25,7 @@ public class ImageService {
   String directory;
 
   @Inject
-  ImagesRepository repository;
+  ImageRepository repository;
 
   public List<Image> list() {
     return repository.listAll();
