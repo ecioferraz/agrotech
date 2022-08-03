@@ -2,70 +2,32 @@ package com.betrybe.agrotechmeasureshelter.model;
 
 import java.time.LocalDateTime;
 
-import org.bson.codecs.pojo.annotations.BsonId;
-import org.bson.types.ObjectId;
-
 public class Image {
-  
-  @BsonId
-  public ObjectId imageId;
 
-  private String originalName;
+  public Image() {}
 
-  private String keyName;
-
-  private Long fileSize;
-  
-  private String mimetype;
-
-  private LocalDateTime uploadDate = LocalDateTime.now();
-
-  public ObjectId getImageId() {
-    return imageId;
+  public Image(String path) {
+    this.path = path;
   }
 
-  public void setImageId(ObjectId imageId) {
-    this.imageId = imageId;
+  public LocalDateTime createdAt = LocalDateTime.now();
+
+  private String path;
+
+  public LocalDateTime getCreatedAt() {
+    return createdAt;
   }
 
-  public String getOriginalName() {
-    return originalName;
+  public void setCreatedAt(LocalDateTime createdAt) {
+    this.createdAt = createdAt;
   }
 
-  public void setOriginalName(String originalName) {
-    this.originalName = originalName;
+  public String getPath() {
+    return path;
   }
 
-  public String getKeyName() {
-    return keyName;
-  }
-
-  public void setKeyName(String keyName) {
-    this.keyName = keyName;
-  }
-
-  public Long getFileSize() {
-    return fileSize;
-  }
-
-  public void setFileSize(Long fileSize) {
-    this.fileSize = fileSize;
-  }
-  
-  public String getMimetype() {
-    return mimetype;
-  }
-
-  public void setMimetype(String mimetype) {
-    this.mimetype = mimetype;
-  }
-
-  public LocalDateTime getUploadDate() {
-    return uploadDate;
-  }
-
-  public void setUploadDate(LocalDateTime uploadDate) {
-    this.uploadDate = uploadDate;
+  public void setPath(String path) {
+    this.path = path;
   }
 
 }
