@@ -21,4 +21,8 @@ public class MeasurementsService {
     measurementsRepository.persist(measurements);
     return measurements;
   }
+
+  public void dropMeasures() {
+    measurementsRepository.deleteAll();
+  }
 }
