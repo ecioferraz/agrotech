@@ -2,6 +2,7 @@ package com.betrybe.agrotechmeasureshelter.service;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
@@ -31,7 +32,7 @@ public class ImageService {
   }
 
   @Transactional
-  public Image sendUpload(FormData data) throws IOException {
+  public Path sendUpload(FormData data) throws IOException {
 
     List<String> mimetype = Arrays.asList("image/jpg", "image/jpeg", "image/gif", "image/png");
 
@@ -43,20 +44,20 @@ public class ImageService {
       throw new IOException("File is too large");
     }
 
-    Image image = new Image();
+    // Image image = new Image();
 
     String fileName = UUID.randomUUID() + "-" + data.getFile().fileName();
 
-    image.setOriginalName(data.getFile().fileName());
-    image.setKeyName(fileName);
-    image.setMimetype(data.getFile().contentType());
-    image.setFileSize(data.getFile().size());
+    // image.setOriginalName(data.getFile().fileName());
+    // image.setKeyName(fileName);
+    // image.setMimetype(data.getFile().contentType());
+    // image.setFileSize(data.getFile().size());
     
-    repository.persist(image);
+    // repository.persist(image);
 
-    Files.copy(data.getFile().filePath(), Paths.get(directory + fileName));
-
-    return image;
+    Path path = Files.copy(data.getFile().filePath(), Paths.get(directory + fileName));
+    
+    return path;
   }
 
 }
