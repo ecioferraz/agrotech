@@ -31,8 +31,8 @@ public class ImageResource {
   @POST
   @Consumes(MediaType.MULTIPART_FORM_DATA)
   public Response sendUpload(@MultipartForm FormData data) throws IOException {
-    service.sendUpload(data);
-    return Response.status(201).build();
+    java.nio.file.Path path = service.sendUpload(data);
+    return Response.status(201).entity(path).build();
   }
   
 }
