@@ -5,7 +5,7 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import com.betrybe.agrotechmeasureshelter.Exception.NotFoundException;
+import com.betrybe.agrotechmeasureshelter.exception.NotFoundException;
 import com.betrybe.agrotechmeasureshelter.model.Isle;
 import com.betrybe.agrotechmeasureshelter.service.IsleService;
 import io.quarkus.test.junit.QuarkusTest;

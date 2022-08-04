@@ -3,7 +3,7 @@ package com.betrybe.agrotechmeasureshelter.test.service;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
-import com.betrybe.agrotechmeasureshelter.Exception.NotFoundException;
+import com.betrybe.agrotechmeasureshelter.exception.NotFoundException;
 import com.betrybe.agrotechmeasureshelter.model.Isle;
 import com.betrybe.agrotechmeasureshelter.repository.IsleRepository;
 import com.betrybe.agrotechmeasureshelter.service.IsleService;
