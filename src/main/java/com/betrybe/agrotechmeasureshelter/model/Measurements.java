@@ -3,12 +3,12 @@ package com.betrybe.agrotechmeasureshelter.model;
 import java.time.LocalDateTime;
 import javax.inject.Inject;
 import org.bson.types.ObjectId;
-import com.betrybe.agrotechmeasureshelter.repository.IsleRepository;
+import com.betrybe.agrotechmeasureshelter.service.IsleService;
 
 public class Measurements {
 
   @Inject
-  IsleRepository repository;
+  IsleService service;
 
   public ObjectId idIsle;
 
@@ -30,8 +30,8 @@ public class Measurements {
     this.soilHumidity = soilHumidity;
     this.airHumidity = airHumidity;
     try {
-      this.isleName = repository.findById(this.idIsle).getName();
-    } catch (NullPointerException np) {
+      this.isleName = service.findById(idIsle).getName();
+    } catch (Exception e) {
       this.isleName = "ilha_test_0";
     }
   }
