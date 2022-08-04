@@ -1,5 +1,6 @@
 package com.betrybe.agrotechmeasureshelter.test.service;
 
+import static org.mockito.Mockito.times;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -41,8 +42,8 @@ public class MeasurementsServiceTest {
   @Test
   public void testCreateMeasurement() {
     Measurements mockMeasurement = new Measurements("507f1f77bcf86cd799439011", 15.33, 3.33, 3.33);
-    Measurements result = measurementsService.add(mockMeasurement);
-    Assertions.assertTrue(result.equals(mockMeasurement));
+    measurementsService.add(mockMeasurement);
+    Mockito.verify(measurementsRepository, times(1)).persist(mockMeasurement);
   }
 
 }
