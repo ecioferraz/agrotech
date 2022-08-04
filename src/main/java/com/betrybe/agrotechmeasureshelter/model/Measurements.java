@@ -1,11 +1,18 @@
 package com.betrybe.agrotechmeasureshelter.model;
 
 import java.time.LocalDateTime;
+import javax.inject.Inject;
 import org.bson.types.ObjectId;
+import com.betrybe.agrotechmeasureshelter.repository.IsleRepository;
 
 public class Measurements {
 
+  @Inject
+  IsleRepository repository;
+
   public ObjectId idIsle;
+
+  private String isleName;
 
   private double temperature;
 
@@ -22,6 +29,15 @@ public class Measurements {
     this.temperature = temperature;
     this.soilHumidity = soilHumidity;
     this.airHumidity = airHumidity;
+    this.isleName = repository.findById(this.idIsle).getName();
+  }
+
+  public String getIsleName() {
+    return isleName;
+  }
+
+  public void setIsleName(String isleName) {
+    this.isleName = isleName;
   }
 
   public ObjectId getIdIsle() {
