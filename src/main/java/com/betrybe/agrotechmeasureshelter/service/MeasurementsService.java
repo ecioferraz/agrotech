@@ -20,4 +20,8 @@ public class MeasurementsService {
   public void add(Measurements measurements) {
     measurementsRepository.persist(measurements);
   }
+
+  public void dropMeasures() {
+    measurementsRepository.deleteAll();
+  }
 }
