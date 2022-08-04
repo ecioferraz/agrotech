@@ -1,18 +1,11 @@
 package com.betrybe.agrotechmeasureshelter.model;
 
 import java.time.LocalDateTime;
-import javax.inject.Inject;
 import org.bson.types.ObjectId;
-import com.betrybe.agrotechmeasureshelter.service.IsleService;
 
 public class Measurements {
 
-  @Inject
-  IsleService service;
-
   public ObjectId idIsle;
-
-  private String isleName;
 
   private double temperature;
 
@@ -29,19 +22,6 @@ public class Measurements {
     this.temperature = temperature;
     this.soilHumidity = soilHumidity;
     this.airHumidity = airHumidity;
-    try {
-      this.isleName = service.findById(idIsle).getName();
-    } catch (Exception e) {
-      this.isleName = "ilha_test_0";
-    }
-  }
-
-  public String getIsleName() {
-    return isleName;
-  }
-
-  public void setIsleName(String isleName) {
-    this.isleName = isleName;
   }
 
   public ObjectId getIdIsle() {
