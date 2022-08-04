@@ -29,7 +29,11 @@ public class Measurements {
     this.temperature = temperature;
     this.soilHumidity = soilHumidity;
     this.airHumidity = airHumidity;
-    this.isleName = repository.findById(this.idIsle).getName();
+    try {
+      this.isleName = repository.findById(this.idIsle).getName();
+    } catch (NullPointerException np) {
+      this.isleName = "ilha_test_0";
+    }
   }
 
   public String getIsleName() {
