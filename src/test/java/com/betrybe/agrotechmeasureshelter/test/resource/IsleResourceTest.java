@@ -2,83 +2,89 @@ package com.betrybe.agrotechmeasureshelter.test.resource;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.inject.Inject;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import com.betrybe.agrotechmeasureshelter.Exception.NotFoundException;
 import com.betrybe.agrotechmeasureshelter.model.Isle;
 import com.betrybe.agrotechmeasureshelter.service.IsleService;
-import io.quarkus.test.junit.QuarkusMock;
 import io.quarkus.test.junit.QuarkusTest;
+import io.quarkus.test.junit.mockito.InjectMock;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.containsString;
 
 @QuarkusTest
 public class IsleResourceTest {
 
-  @Inject
+  @InjectMock
   IsleService isleService;
 
-  @BeforeAll
-  public static void setup() throws NotFoundException {
+  private Isle mockIsle;
+
+  @BeforeEach
+  public void setup() throws NotFoundException {
     List<Isle> mockList = new ArrayList<Isle>();
-    Isle mockIsle = new Isle("Ilha Norte", true);
-    // mockList.add(mockIsle);
-    IsleService mockService = Mockito.mock(IsleService.class);
-    Mockito.when(mockService.list()).thenReturn(mockList);
-    Mockito.doNothing().when(mockService).add(mockIsle);
-    Mockito.doNothing().when(mockService).delete("null");
-    Mockito.when(mockService.update("blablabla", mockIsle)).thenReturn(mockIsle);
-    Mockito.when(mockService.findById(Mockito.anyString())).thenReturn(mockIsle);
-    Isle mockSouthIsle = new Isle("Ilha Sul", true);
-    Mockito.when(mockService.search("Ilha Sul")).thenReturn(mockSouthIsle);
-    QuarkusMock.installMockForType(mockService, IsleService.class);
+    mockIsle = new Isle();
+    mockIsle.setName("South Isle");
+    mockIsle.setStatus(true);
+    mockList.add(mockIsle);
   }
 
   @Test
   public void testSuccessfulGetRequest() {
+    Mockito.when(isleService.list()).thenReturn(List.of());
     given().when().get("/isle").then().statusCode(200).body(containsString("[]"));
   }
 
   @Test
-  public void testSuccessfulGetByIdRequest() {
-    given().when().get("/isle/blablabla").then().statusCode(200)
-        .body(containsString("{\"id\":null,\"name\":\"Ilha Norte\",\"status\":true}"));
+  public void testSuccessfulGetByIdRequest() throws NotFoundException {
+    Mockito.when(isleService.findById("62ead48515906f4f3f529240")).thenReturn(mockIsle);
+    given().when().get("/isle/62ead48515906f4f3f529240").then().statusCode(200);
   }
 
   @Test
   public void testSuccessfullAddIsle() {
-    var newIsle = new Isle("Ilha Sul", true);
+    Isle newIsle = new Isle();
+    newIsle.setName("North Island");
+    newIsle.setStatus(true);
+    Mockito.doNothing().when(isleService).add(newIsle);
     given().contentType("application/json").body(newIsle).when().post("/isle").then()
         .statusCode(200);
   }
 
   @Test
-  public void testSuccessfullUpdate() {
+  public void testSuccessfullUpdate() throws NotFoundException {
     Isle mockIsle = new Isle();
+    Mockito.when(isleService.update("62ead48515906f4f3f529240", mockIsle)).thenReturn(mockIsle);
     given().body(mockIsle).header("Content-Type", "application/json").when().put("/isle/blablabla")
         .then().statusCode(204);
   }
 
   @Test
   public void testSuccessfullCountIsle() {
-    given().when().get("/isle/count").then().statusCode(200).body(containsString("0"));
+    Mockito.when(isleService.count()).thenReturn(1L);
+    given().when().get("/isle/count").then().statusCode(200).body(containsString("1"));
   }
 
   @Test
   public void testSuccessfullDropDatabase() {
+    Mockito.doNothing().when(isleService).dropDatabase();
     given().when().get("/isle/drop").then().statusCode(204).body(containsString(""));
   }
 
   @Test
   public void testSuccessfullSearchIsleByName() {
+    mockIsle = new Isle();
+    mockIsle.setName("South Isle");
+    mockIsle.setStatus(true);
+    Mockito.when(isleService.search("Ilha Sul")).thenReturn(mockIsle);
     given().when().get("/isle/search/Ilha Sul").then().statusCode(200)
-        .body(containsString("{\"id\":null,\"name\":\"Ilha Sul\",\"status\":true}"));
+        .body(containsString("{\"id\":null,\"name\":\"South Isle\",\"status\":true}"));
   }
 
   @Test
-  public void testSuccessfullDeleteIsle() {
-    given().when().delete("/isle/null").then().statusCode(204);
+  public void testSuccessfullDeleteIsle() throws NotFoundException {
+    Mockito.doNothing().when(isleService).delete("62ead48515906f4f3f529240");
+    given().when().delete("/isle/62ead48515906f4f3f529240").then().statusCode(204);
   }
 }
