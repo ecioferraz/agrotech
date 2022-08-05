@@ -34,8 +34,8 @@ public class ImageResource {
   @Consumes(MediaType.MULTIPART_FORM_DATA)
   @Produces(MediaType.APPLICATION_JSON)
   public Response sendUpload(@MultipartForm FormData data) throws IOException {
-    Image image = service.sendUpload(data);
-    return Response.status(201).entity(image).build();
+    service.sendUpload(data);
+    return Response.status(201).build();
   }
 
   @GET
