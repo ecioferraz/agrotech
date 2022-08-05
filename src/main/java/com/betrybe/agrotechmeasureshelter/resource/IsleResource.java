@@ -13,7 +13,7 @@ import com.betrybe.agrotechmeasureshelter.exception.NotFoundException;
 import com.betrybe.agrotechmeasureshelter.model.Isle;
 import com.betrybe.agrotechmeasureshelter.service.IsleService;
 
-@Path("/isle")
+@Path("/isles")
 public class IsleResource {
 
   @Inject
