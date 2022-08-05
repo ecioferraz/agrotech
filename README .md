@@ -1,9 +1,9 @@
 
 # Agrotech measure shelter
 
-API desenvolvida em Java com Quarkus. Testes em JUnit e Quarkus Test. Banco de dados hospedado no Atlas e conexão feita através do Panache.
+API developed with Java + Quarkus. Testing with JUnit + QuarkusTest. Database hosted in Atlas mongo with connection through Panache.
 
-O objetivo dessa API é criar uma central de buscas e monitoramento de ilhas de uma plantação. Através dos documentos contendo informação sobre as ilhas, as medidas feitas pelas ilhas e referências à imagens de satélite, a API disponibiliza os dados de forma organizada e seguindo os padrões REST.
+The goal of this app is to create a central interface for maintaining and monitoring measure shelters. The documents contain information about the shelters, the measurements and satellite pictures taken every 20 days.
 
 ## API Reference
 
@@ -15,7 +15,7 @@ O objetivo dessa API é criar uma central de buscas e monitoramento de ilhas de 
 
 | Return | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `Measurement` | `[json]` | Medidas feitas pelas ilhas |
+| `Measurement` | `[json]` | all measurements |
 
 Measurement: {
     idIsle,
@@ -31,7 +31,7 @@ Measurement: {
 
 | Body | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `Measurement` | `json` | **Required** Medida feita pela ilha (SEM DATA)|
+| `Measurement` | `json` | **Required** measurement by an isle (NO DATE)|
 
 Measurement: {
     idIsle,
@@ -48,7 +48,7 @@ Measurement: {
 
 | Return | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `Isle` | `[json]` | Ilhas de monitoramento |
+| `Isle` | `[json]` | measurement isles |
 
 Isle: {
     id,
@@ -62,7 +62,7 @@ Isle: {
 
 | Body | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `Isle` | `json` | Ilha de monitoramento (SEM ID) |
+| `Isle` | `json` | measurement isle (NO ID) |
 
 Isle: {
     name,
@@ -74,11 +74,11 @@ Isle: {
 ```
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `id` | `String` | Id da ilha |
+| `id` | `String` | isle id |
 
 | Return | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `Isle` | `json` | Ilha de monitoramento |
+| `Isle` | `json` | measurement isle |
 
 Isle: {
     id,
@@ -91,15 +91,15 @@ Isle: {
 ```
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `id` | `String` | Id da ilha |
+| `id` | `String` | isle id |
 
 | Body | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `Isle` | `json` | Ilha de monitoramento |
+| `Isle` | `json` | measurement isle |
 
 | Return | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `Isle` | `json` | Ilha de monitoramento |
+| `Isle` | `json` | measurement isle |
 
 Isle: {
     id,
@@ -112,18 +112,18 @@ Isle: {
 ```
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `id` | `String` | Id da ilha |
+| `id` | `String` | isle id |
 
 ```http
   GET /isle/search/{name}
 ```
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `name` | `String` | Nome da ilha |
+| `name` | `String` | isle name |
 
 | Return | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `Isle` | `json` | Ilha de monitoramento |
+| `Isle` | `json` | measurement isle |
 
 Isle: {
     id,
@@ -136,7 +136,7 @@ Isle: {
 ```
 | Return | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `Count` | `long` | Contagem de Ilhas |
+| `Count` | `long` | isle count |
 
 Isle: {
     id,
@@ -152,7 +152,7 @@ Isle: {
 
 | Return | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `Image` | `[json]` | Referências às imagens de satélite |
+| `Image` | `[json]` | reference to satellite images |
 
 Image: {
     createdAt,
@@ -165,18 +165,18 @@ Image: {
 
 | Body | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `File` | `Multipart FormData` | **Required** Arquivo de imagem |
+| `File` | `Multipart FormData` | **Required** image file |
 
 ```http
   GET /image/{createdAt}
 ```
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `createdAt` | `String` | Data e hora da inserção da imagem |
+| `createdAt` | `String` | date and time of insertion |
 
 | Return | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `Download Link` | `.png` | Link para download da imagem |
+| `Download Link` | `.png` | download link |
 
 Image: {
     createdAt,
@@ -234,6 +234,7 @@ To check test coverage, go to
 ```
 
 and open the `index.html` on a browser.
+
 ## Authors
 
 - [@EcioFerraz](https://www.github.com/ecioferraz)
