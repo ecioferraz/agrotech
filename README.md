@@ -1,4 +1,3 @@
-
 # Agrotech measure shelter
 
 API developed with Java + Quarkus. Testing with JUnit + QuarkusTest. Database hosted in Atlas mongo with connection through Panache.
@@ -6,6 +5,11 @@ API developed with Java + Quarkus. Testing with JUnit + QuarkusTest. Database ho
 The goal of this app is to create a central interface for maintaining and monitoring measure shelters. The documents contain information about the shelters, the measurements and satellite pictures taken every 20 days.
 
 ## API Reference
+
+_______________________________________________________________________________________________________________
+Our API has been deployed to Heroku, the URI for all the requests is https://measure-shelter-api.herokuapp.com/
+_______________________________________________________________________________________________________________
+
 
 #### Measurements
 
@@ -183,8 +187,10 @@ Image: {
     path
 }
 
-
-
+## Sample App
+_______________________________________________________________________________________________________________
+We've created a sample Homepage for our app, check it out at
+_______________________________________________________________________________________________________________
 
 ## Run Locally
 
