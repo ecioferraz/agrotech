@@ -10,7 +10,7 @@ The goal of this app is to create a central interface for maintaining and monito
 #### Measurements
 
 ```http
-  GET /measurement
+  GET /measurements
 ```
 
 | Return | Type     | Description                |
@@ -26,7 +26,7 @@ Measurement: {
 }
 
 ```http
-  POST /measurement
+  POST /measurements
 ```
 
 | Body | Type     | Description                |
@@ -43,7 +43,7 @@ Measurement: {
 #### Isle
 
 ```http
-  GET /isle
+  GET /isles
 ```
 
 | Return | Type     | Description                |
@@ -57,7 +57,7 @@ Isle: {
 }
 
 ```http
-  POST /isle
+  POST /isles
 ```
 
 | Body | Type     | Description                |
@@ -70,7 +70,7 @@ Isle: {
 }
 
 ```http
-  GET /isle/{id}
+  GET /isles/{id}
 ```
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
@@ -87,7 +87,7 @@ Isle: {
 }
 
 ```http
-  PUT /isle/{id}
+  PUT /isles/{id}
 ```
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
@@ -108,14 +108,14 @@ Isle: {
 }
 
 ```http
-  DELETE /isle/{id}
+  DELETE /isles/{id}
 ```
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
 | `id` | `String` | isle id |
 
 ```http
-  GET /isle/search/{name}
+  GET /isles/search/{name}
 ```
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
@@ -132,7 +132,7 @@ Isle: {
 }
 
 ```http
-  GET /isle/count
+  GET /isles/count
 ```
 | Return | Type     | Description                |
 | :-------- | :------- | :------------------------- |
@@ -147,7 +147,7 @@ Isle: {
 #### Image
 
 ```http
-  GET /image
+  GET /images
 ```
 
 | Return | Type     | Description                |
@@ -160,7 +160,7 @@ Image: {
 }
 
 ```http
-  POST /image
+  POST /images
 ```
 
 | Body | Type     | Description                |
@@ -168,7 +168,7 @@ Image: {
 | `File` | `Multipart FormData` | **Required** image file |
 
 ```http
-  GET /image/{createdAt}
+  GET /images/{createdAt}
 ```
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
